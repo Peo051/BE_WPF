@@ -1,0 +1,67 @@
+<UserControl x:Class="Bai04.ucSinhVien"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="700">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Mã SV" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox x:Name="txtMaSV" Grid.Row="0" Grid.Column="1" Margin="0,5"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Họ tên" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox x:Name="txtHoTen" Grid.Row="1" Grid.Column="1" Margin="0,5"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Ngày sinh" VerticalAlignment="Center" Margin="0,5"/>
+        <DatePicker x:Name="dtpNgaySinh" Grid.Row="2" Grid.Column="1" Margin="0,5"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Giới tính" VerticalAlignment="Center" Margin="0,5"/>
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="0,5">
+            <RadioButton x:Name="radNam" Content="Nam" IsChecked="True" Margin="0,0,15,0"/>
+            <RadioButton x:Name="radNu" Content="Nữ"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Sở thích" VerticalAlignment="Center" Margin="0,5"/>
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="0,5">
+            <CheckBox x:Name="chkTheThao" Content="Thể thao" Margin="0,0,15,0"/>
+            <CheckBox x:Name="chkAmNhac" Content="Âm nhạc" Margin="0,0,15,0"/>
+            <CheckBox x:Name="chkDuLich" Content="Du lịch"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Lớp" VerticalAlignment="Center" Margin="0,5"/>
+        <ComboBox x:Name="cboLop" Grid.Row="5" Grid.Column="1" Margin="0,5">
+            <ComboBoxItem>CNTT</ComboBoxItem>
+            <ComboBoxItem>Kế toán</ComboBoxItem>
+            <ComboBoxItem>Quản trị kinh doanh</ComboBoxItem>
+        </ComboBox>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Môn học" VerticalAlignment="Top" Margin="0,5"/>
+        <ListBox x:Name="lstMonHoc" Grid.Row="6" Grid.Column="1" Height="100" Margin="0,5" SelectionMode="Multiple">
+            <ListBoxItem>Lập trình C#</ListBoxItem>
+            <ListBoxItem>Cơ sở dữ liệu</ListBoxItem>
+            <ListBoxItem>WPF nâng cao</ListBoxItem>
+            <ListBoxItem>Mạng máy tính</ListBoxItem>
+        </ListBox>
+
+        <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+            <Button x:Name="btnLuu" Content="Lưu" Width="80" Margin="5,0" Click="btnLuu_Click"/>
+            <Button x:Name="btnXoa" Content="Xóa" Width="80" Margin="5,0" Click="btnXoa_Click"/>
+            <Button x:Name="btnLamMoi" Content="Làm mới" Width="80" Margin="5,0" Click="btnLamMoi_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

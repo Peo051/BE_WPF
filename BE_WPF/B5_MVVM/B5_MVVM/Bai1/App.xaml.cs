@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace Bai4
+namespace Bai1
 {
     /// <summary>
     /// Interaction logic for App.xaml
