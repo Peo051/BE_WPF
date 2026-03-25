@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="Bai3.Views.ThanhToanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             Background="White">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1.5*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="10">
+            <TextBlock Text="QUẢN LÍ KHÁCH SẠN"
+                       FontSize="24" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Họ và tên:" Width="100"/>
+                <TextBox Width="250" Text="{Binding HoTen, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Địa chỉ:" Width="100"/>
+                <TextBox Width="400" Text="{Binding DiaChi, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Số ngày ở:" Width="100"/>
+                <TextBox Width="100" Text="{Binding SoNgayO, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <Grid Margin="0,15,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <GroupBox Header="Loại phòng" Grid.Column="0" Margin="5">
+                    <StackPanel>
+                        <RadioButton Content="Phòng đơn" IsChecked="{Binding PhongDon}"/>
+                        <RadioButton Content="Phòng đôi" IsChecked="{Binding PhongDoi}"/>
+                        <RadioButton Content="Phòng ba" IsChecked="{Binding PhongBa}"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Tiện nghi" Grid.Column="1" Margin="5">
+                    <StackPanel>
+                        <CheckBox Content="Tivi" IsChecked="{Binding CoTivi}"/>
+                        <CheckBox Content="Internet" IsChecked="{Binding CoInternet}"/>
+                        <CheckBox Content="Máy nước nóng" IsChecked="{Binding CoMayNuocNong}"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Dịch vụ" Grid.Column="2" Margin="5">
+                    <StackPanel>
+                        <CheckBox Content="Karaoke" IsChecked="{Binding CoKaraoke}"/>
+                        <CheckBox Content="Ăn sáng" IsChecked="{Binding CoAnSang}"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Tính tiền" Command="{Binding TinhTienCommand}" Width="100" Margin="5"/>
+                <Button Content="Thanh toán" Command="{Binding ThanhToanCommand}" Width="100" Margin="5"/>
+                <Button Content="Nhập mới" Command="{Binding NhapMoiCommand}" Width="100" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,10">
+                <TextBlock Text="Thành tiền:" Width="100" VerticalAlignment="Center"/>
+                <TextBox Width="200" IsReadOnly="True"
+                         Text="{Binding ThanhTien, StringFormat={}{0:N0} VND}"/>
+            </StackPanel>
+
+            <Button Content="Thoát" Command="{Binding ThoatCommand}" Width="100" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
