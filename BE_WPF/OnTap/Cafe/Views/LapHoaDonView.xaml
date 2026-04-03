@@ -1,0 +1,174 @@
+﻿<UserControl x:Class="Cafe.Views.LapHoaDonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cafe.Views"
+             xmlns:vm="clr-namespace:Cafe.ViewModels"
+    d:DataContext="{d:DesignInstance vm:LapHoaDonViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- LEFT FORM -->
+        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+
+            <!-- KHÁCH HÀNG -->
+            <GroupBox Header="Thông tin khách hàng" Margin="0,0,0,10">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Tên khách"/>
+                    <TextBox Text="{Binding TenKhach}" Margin="0,5"/>
+
+                    <TextBlock Text="Số điện thoại"/>
+                    <TextBox Text="{Binding SoDienThoai}" Margin="0,5"/>
+
+                    <CheckBox Content="Sinh viên (giảm 20%)"
+                              IsChecked="{Binding LaSinhVien}" Margin="0,5"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- BÀN -->
+            <GroupBox Header="Chọn bàn" Margin="0,0,0,10">
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <RadioButton Content="Bàn 01"
+             GroupName="Ban"
+             Margin="10"
+             Command="{Binding ChonBanCommand}"
+             CommandParameter="Bàn 01"/>
+
+<RadioButton Content="Bàn 02"
+             GroupName="Ban"
+             Margin="10"
+             Command="{Binding ChonBanCommand}"
+             CommandParameter="Bàn 02"/>
+
+<RadioButton Content="Bàn 03"
+             GroupName="Ban"
+             Margin="10"
+             Command="{Binding ChonBanCommand}"
+             CommandParameter="Bàn 03"/>
+                    <!--CommandParameter = dữ liệu truyền vào Command-->
+
+<RadioButton Content="Bàn 04"
+             GroupName="Ban"
+             Margin="10"
+             Command="{Binding ChonBanCommand}"
+             CommandParameter="Bàn 04"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- NƯỚC -->
+            <GroupBox Header="Nước uống" Margin="0,0,0,10">
+                <ItemsControl ItemsSource="{Binding NuocUong}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding TenMon}"
+                                      IsChecked="{Binding IsSelected}"
+                                      Margin="5"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </GroupBox>
+
+            <!-- THỨC ĂN -->
+            <GroupBox Header="Thức ăn">
+                <ItemsControl ItemsSource="{Binding ThucAn}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding TenMon}"
+                                      IsChecked="{Binding IsSelected}"
+                                      Margin="5"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </GroupBox>
+
+            <!-- BUTTON -->
+            <Grid Margin="0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Content="Chọn"
+            Grid.Column="0"
+            Margin="5"
+            Command="{Binding ChonCommand}"/>
+
+                <Button Content="Nhập lại"
+            Grid.Column="1"
+            Margin="5"
+            Command="{Binding NhapLaiCommand}"/>
+            </Grid>
+        </StackPanel>
+
+        <!-- RIGHT PANEL -->
+        <Border Grid.Column="1"
+                BorderBrush="#888"
+                BorderThickness="1"
+                CornerRadius="10"
+                Padding="15"
+                Background="#F5F5F5">
+
+            <StackPanel>
+
+                <TextBlock Text="HÓA ĐƠN"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="DarkBlue"
+                           HorizontalAlignment="Center"/>
+
+                <Separator Margin="0,10"/>
+                
+                <TextBlock Text="{Binding TenKhach, StringFormat=Khách: {0}}"/>
+                <TextBlock Text="{Binding SoDienThoai, StringFormat=SĐT: {0}}"/>
+                <TextBlock Text="{Binding BanDuocChon, StringFormat=Bàn: {0}}"/>
+
+                <TextBlock Text="{Binding LaSinhVien, StringFormat=Sinh viên: {0}}"/>
+
+                <Separator Margin="10"/>
+
+                <TextBlock Text="Nước uống:" FontWeight="Bold"/>
+                <TextBlock Text="{Binding HoaDonHienThi.NuocText}" TextWrapping="Wrap"/>
+
+                <TextBlock Text="Thức ăn:" FontWeight="Bold" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding HoaDonHienThi.ThucAnText}" TextWrapping="Wrap"/>
+
+                <Separator Margin="10"/>
+
+                <TextBlock Text="TỔNG TIỀN"
+                           FontWeight="Bold"
+                           Foreground="Red"
+                           HorizontalAlignment="Center"/>
+
+                <TextBlock Text="{Binding HoaDonHienThi.TongTien, StringFormat={}{0:N0}đ}"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="Red"
+                           HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            Margin="0,10">
+
+                    <Button Content="Thanh toán"
+            Width="100"
+            Margin="5"
+            Command="{Binding ThanhToanCommand}"/>
+
+                    <Button Content="Thoát"
+            Width="100"
+            Margin="5"
+            Command="{Binding ThoatCommand}"/>
+
+                </StackPanel>
+
+            </StackPanel>
+            
+        </Border>
+
+    </Grid>
+</UserControl>
